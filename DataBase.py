@@ -1,5 +1,5 @@
 from mizodb import MiZODB, transaction
-from Persona import Cliente
+from Person import Customer
 
 db = MiZODB('./Data')
 dbroot = db.root
@@ -71,7 +71,7 @@ def returnObj(key, quantity):
         return None
 
 def getRentedObjects(key):
-    dbroot[key].rentedObjects={'ironChair':0, 'plasticChair':0, 'puff':0}, 'longTable':0,
+    dbroot[key].rentedObjects={'ironChair':0, 'plasticChair':0, 'puff':0, 'longTable':0,
     'shortTable':0, 'circleTable':0, 'glasses':0 ,'cutlery':0, 'dish':0}
     transaction.commit()
 

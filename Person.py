@@ -1,7 +1,6 @@
 from abc import ABCMeta, abstractmethod
 from persistent import *
 
-
 class Person(object):
 
     __metaclass__ = ABCMeta
@@ -29,7 +28,7 @@ class Person(object):
         return self.telephone
 
     def __str__(self):
-        return ('\nNombre: ' + self.name + '\nApellido: ' + self.lastName + '\nCedula: ' + self.ci + '\nDireccion: ' + self.address)
+        return ('\nNombre: ' + self.name + '\nApellido: ' + self.lastName + '\nCedula: ' + self.ci + '\nDireccion: ' + self.address
         +'\nTelefono: ' + self.telephone)
 
     
@@ -47,7 +46,7 @@ class Customer(Person, Persistent):
         return (super().__str__()+'\nRuc: '+self.ruc+'\n Objetos Arrendados: '+ str(self.rentedObjects))
 
     
-class Employee(Persona, Persistent):
+class Employee(Person, Persistent):
 
     def __init__(self, salary=0, **kwargs):
         super().__init__(**kwargs)
