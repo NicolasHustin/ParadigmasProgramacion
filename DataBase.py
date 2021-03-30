@@ -1,5 +1,6 @@
 from mizodb import MiZODB, transaction
-from Person import Customer
+from Person import Customer, Employee
+from Bussines import Bussines
 
 db = MiZODB('./Data')
 dbroot = db.root
@@ -7,6 +8,8 @@ dbroot = db.root
 RETURNS MADE FROM THE CONTROLLER'''
 
 def saveStock():
+    #dbroot[keyArticle] = value
+    #transaction.commit()
     dbroot['ironChair']=500
     dbroot['plasticChair']=500
     dbroot['puff']=500
@@ -16,6 +19,9 @@ def saveStock():
     dbroot['glasses']=500
     dbroot['cutlery']=500
     dbroot['dish']=500
+
+def startDataTest():
+    longTable = LongTable
 
 def saveCustomer(key, value):
     dbroot[key]=value
@@ -75,6 +81,15 @@ def getRentedObjects(key):
     'shortTable':0, 'circleTable':0, 'glasses':0 ,'cutlery':0, 'dish':0}
     transaction.commit()
 
+def getArticle(key):
+    try:
+        if(dbroot[key] != None):
+            return dbroot[key]
+        else:
+            return None
+    except KeyError:
+        print('Article with code [{}] not found!'.format(key))
+
 def listRecords():
     result = []
     for key in dbroot.keys():
@@ -82,4 +97,22 @@ def listRecords():
         if isinstance (object, Customer):
             result.append(object)
 
+    return result
+
+def listRecordsEmployee():
+    result = []
+    for key in dbroot.keys():
+        object = dbroot[key]
+        if isinstance (object, Employee):
+            result.append(object)
+    
+    return result
+
+def listArticles():
+    result = []
+    for key in dbroot.keys():
+        object = dbroot[key]
+        if isinstance (object, Bussines):
+            result.append(object)
+    
     return result
