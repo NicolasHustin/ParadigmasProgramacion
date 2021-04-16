@@ -23,6 +23,9 @@ class Controller():
     def listOfArticles():
         return listArticles()
 
+    def printArticles():
+        return printArticles()
+
         
     #def rentArticleClient(ciClient):
 

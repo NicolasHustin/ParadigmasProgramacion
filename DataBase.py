@@ -1,6 +1,7 @@
 from mizodb import MiZODB, transaction
 from Person import Customer, Employee
 from Bussines import Bussines
+from Leasable import *
 
 db = MiZODB('./Data')
 dbroot = db.root
@@ -21,7 +22,8 @@ def saveStock():
     dbroot['dish']=500
 
 def startDataTest():
-    longTable = LongTable
+    longTable = LongTable('Long Table ',500)
+    dbroot['longTableTest'] = longTable, 500
 
 def saveCustomer(key, value):
     dbroot[key]=value
@@ -116,3 +118,10 @@ def listArticles():
             result.append(object)
     
     return result
+
+def printArticles():
+    for key in dbroot.keys():
+        print('*****' * 10)
+        print(key)
+        print('*****' * 10)
+        print(dbroot[key])

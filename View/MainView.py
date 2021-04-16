@@ -89,7 +89,7 @@ class View():
                         pauseProcess()
                     if(typeArticle==2):
                         View.cleanScreen()
-                        listOfArticles = Controller.listOfArticles()
+                        listOfArticles = Controller.printArticles()
                         print('\n')
                         for article in listArticles:
                             print('--'*45)

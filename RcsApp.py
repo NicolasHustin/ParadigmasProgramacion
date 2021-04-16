@@ -7,7 +7,8 @@ class RcsApp ():
     
     @staticmethod
     def initApp():
-        #startDataTest()
+        startDataTest()
+        
         RcsApp.mainMenu()
 
     def mainMenu():

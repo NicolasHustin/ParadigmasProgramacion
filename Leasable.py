@@ -5,8 +5,9 @@ class Leasable (object):
 
     __metaclass__ = ABCMeta
 
-    def __init__(self):
-        pass
+    def __init__(self, description, cant):
+        self.description=description
+        self.cant=cant
 
     @abstractmethod
     def rent():
