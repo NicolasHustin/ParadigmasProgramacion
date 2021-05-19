@@ -46,17 +46,18 @@ class View():
 
     def generalInquiry():
         operationInquiry = 0
-        while(operationInquiry != 4):
+        while(operationInquiry != 5):
             View.cleanScreen()
             operationInquiry = 0
             print('--'*45)
             print('\n\tCONSULTAS GENERALES')
             print('\n\n1) CONSULTA EMPLEADOS')
             print('2) CONSULTA ARTICULOS')
-            print('3) CONSULTA CLIENTES')
-            print('4) VOLVER \n\n')
+            print('3) CONSULTA CLIENTES\n')
+            print('4) PRESUPUSTO \n')
+            print('5) VOLVER \n\n')
             print('--'*45)
-            operationInquiry = int(input('Ingrese una opcion [1 al 4]: '))
+            operationInquiry = int(input('Ingrese una opcion [1 al 5]: '))
             if(operationInquiry==1):
                 typeEmployee = 0
                 while(typeEmployee != 3):
@@ -96,6 +97,18 @@ class View():
                             print(article)
                             print('--'*45)
                         pauseProcess()
+            if(operationInquiry == 3):
+                #TODO
+                #Consulta de clientes, se podra ver todos los clientes asi tambien consulta por cedula
+                pauseProcess()
+            if(operationInquiry == 4):
+                #TODO
+                #Consulta un presupuesto, un precio estimado de los articulos a rentar
+                View.cleanScreen()
+
+                pauseProcess()
+            
+            
             
     def rentArticles():
         operationRent = 0
@@ -160,5 +173,7 @@ class View():
         print('\n\tAGREGAR RESERVA')
         print('\nCedula cliente: ')
         #client = Controller.
+
+    
                 
             

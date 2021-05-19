@@ -22,7 +22,7 @@ def saveStock():
     dbroot['dish']=500
 
 def startDataTest():
-    longTable = LongTable('Long Table ',500)
+    longTable = LongTable(description='Long Table ', cant=500)
     dbroot['longTableTest'] = longTable, 500
 
 def saveCustomer(key, value):

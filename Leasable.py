@@ -1,5 +1,5 @@
 from abc import ABCMeta, abstractmethod
-from DataBase import rent, returnObj
+from DataBase import *
 
 class Leasable (object):
 
@@ -33,11 +33,11 @@ class IronChair(Chair):
     def rent(cant):
         rent('ironChair', cant)
 
-    def returnObj(cant)
+    def returnObj(cant):
         returnObj('ironChair', cant)
     
     @classmethod
-    def price(self)
+    def price(self):
         return(IronChair.__price)
 
     def __str__(self):
