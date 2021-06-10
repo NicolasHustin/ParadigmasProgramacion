@@ -27,7 +27,11 @@ class Controller():
         return printArticles()
 
         
-    #def rentArticleClient(ciClient):
+    def rentArticleClient(ciClient):
+        pass
+
+    def returnArticles():
+        pass
 
 
     

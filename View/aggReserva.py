@@ -44,8 +44,10 @@ class agregarReserva():
         self.cedula.focus()
         self.cedula.place(x=160, y=30)
 
-        self.btonAgregar = Button(self.vReserva, text="CONSULTAR", bg="green",command=self.consultaci)
-        self.btonAgregar.place(x=350, y=50)
+        #BOTON PARA AUTOCOMPLETAR CON LOS DATOS DE UN CLIENTE
+        #FALTA IMPLEMENTAR, DEBIDO A QUE SE SUPERPONEN EN LAS PESTAÑAS
+        #self.btonAgregar = Button(self.vReserva, text="CONSULTAR", bg="green",command=self.consultaci)
+        #self.btonAgregar.place(x=350, y=50)
 
         Label(self.frmcli, text="Ruc: ",bg='White',font=self.ComicSansMS).place(x=60,y=70)
         self.ruc = Entry(self.frmcli)
@@ -69,38 +71,38 @@ class agregarReserva():
 
         self.MVBoli=font.Font(family="MV Boli",size=9,weight="bold")
 
-        Label(self.frmbien, text="ARTICULOS",bg='White', fg=colorFont,font=self.ComicSansMS).place(x=250,y=0)
+        Label(self.frmbien, text="ARTICULOS",bg='White',  font=self.ComicSansMS).place(x=250,y=0)
 
-        Label(self.frmbien, text="CANT. SILLAS HIERRO:",bg='White', fg=colorFont,font=self.MVBoli).place(x=120,y=24)
+        Label(self.frmbien, text="CANT. SILLAS HIERRO:",bg='White',  font=self.MVBoli).place(x=120,y=24)
         self.grande = Entry(self.frmbien)
         self.grande.place(x=325,y=26)
-        Label(self.frmbien, text="TIPO DE SILLAS",bg='White', fg=colorFont,font=self.MVBoli).place(x=0,y=44)
-        Label(self.frmbien, text="CANT. SILLAS PLASTICO:",bg='White', fg=colorFont,font=self.MVBoli).place(x=120,y=70)
+        Label(self.frmbien, text="SILLAS",bg='White',  font=self.MVBoli).place(x=0,y=44)
+        Label(self.frmbien, text="CANT. SILLAS PLASTICO:",bg='White',  font=self.MVBoli).place(x=120,y=70)
         self.pequena = Entry(self.frmbien)
         self.pequena.place(x=325,y=72)
 
-        Label(self.frmbien, text="CANT. MESA LARGA:",bg='White', fg=colorFont,font=self.MVBoli).place(x=120,y=98)
+        Label(self.frmbien, text="CANT. MESA LARGA:",bg='White',  font=self.MVBoli).place(x=120,y=98)
         self.rectangulo = Entry(self.frmbien)
         self.rectangulo.place(x=325,y=98)
 
-        Label(self.frmbien, text="TIPO DE MESA",bg='White', fg=colorFont,font=self.MVBoli).place(x=0,y=120)
-        Label(self.frmbien, text="CANT. MESA REDONDA:",bg='White', fg=colorFont,font=self.MVBoli).place(x=120,y=146)
+        Label(self.frmbien, text="MESA",bg='White',  font=self.MVBoli).place(x=0,y=120)
+        Label(self.frmbien, text="CANT. MESA CHICA:",bg='White',  font=self.MVBoli).place(x=120,y=146)
         self.redonda = Entry(self.frmbien)
         self.redonda.place(x=325,y=148)
 
-        Label(self.frmbien, text="CANT. VASOS:",bg='White', fg=colorFont,font=self.MVBoli).place(x=120,y=172)
+        Label(self.frmbien, text="CANT. VASOS:",bg='White',  font=self.MVBoli).place(x=120,y=172)
         self.vaso = Entry(self.frmbien)
         self.vaso.place(x=325,y=174)
-        Label(self.frmbien, text="TIPO ARTICULO COCINA",bg='White', fg=colorFont,font=self.MVBoli).place(x=0,y=198)
-        Label(self.frmbien, text="CANT. MESA PLATO:",bg='White', fg=colorFont,font=self.MVBoli).place(x=120,y=198)
+        Label(self.frmbien, text="ARTICULO COCINA",bg='White',  font=self.MVBoli).place(x=0,y=198)
+        Label(self.frmbien, text="CANT. PLATOS:",bg='White',  font=self.MVBoli).place(x=120,y=198)
         self.plato = Entry(self.frmbien)
         self.plato.place(x=325,y=200)
-        Label(self.frmbien, text="CANT. MESA APAREJO:",bg='White', fg=colorFont,font=self.MVBoli).place(x=120,y=224)
+        Label(self.frmbien, text="CANT. CUBIERTOS:",bg='White',  font=self.MVBoli).place(x=120,y=224)
         self.aparejo = Entry(self.frmbien)
         self.aparejo.place(x=325,y=226)
 
-        Label(self.frmbien, text="CUBRE",bg='White', fg=colorFont,font=self.MVBoli).place(x=0,y=250)
-        Label(self.frmbien, text="CANT. DE CUBRE:",bg='White', fg=colorFont,font=self.MVBoli).place(x=120,y=250)
+        Label(self.frmbien, text="TELAS",bg='White',  font=self.MVBoli).place(x=0,y=250)
+        Label(self.frmbien, text="CANT. TELAS:",bg='White',  font=self.MVBoli).place(x=120,y=250)
 
         self.cubre = Entry(self.frmbien)
         self.cubre.place(x=325,y=252)
@@ -113,8 +115,10 @@ class agregarReserva():
         self.vReserva.mainloop()
 
     def addCliente(self):
-        #TODO: Implementar el metodo
-        pass
+        self.vReserva.destroy()
+        messagebox.showinfo("addCustomer", "FALTA IMPLEMENTAR")
+        #TODO:
+        #aqui agregarmos al cliente una reserva, con articulos y queda guardado, al momento de la devolucion se vuelve a 0
 
     def validate(self, value):
         if not value.isdigit():

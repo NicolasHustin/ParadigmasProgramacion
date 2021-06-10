@@ -25,7 +25,7 @@ class aggEmpleado():
         DejaVuSansMono = font.Font(family="DejaVu Sans Mono",size=15,weight="bold")
         Label(self.vEmpl, text="REGISTRAR EMPLEADO", bg='White',font=DejaVuSansMono).grid(row=1, column=10)
 
-        Label(self.vEmpl, text="Cedula*:",bg='White', fg='red',font=ComicSansMS).grid(row=5, column=9)
+        Label(self.vEmpl, text="Cedula*:",bg='White',font=ComicSansMS).grid(row=5, column=9)
         self.cedula = Entry(self.vEmpl)
         self.cedula.focus()
         self.cedula.grid(row=5, column=10)
@@ -51,10 +51,10 @@ class aggEmpleado():
         self.sueldo.focus()
         self.sueldo.grid(row=10, column=10)
 
-        self.btonAgregar = Button(self.vEmpl, text="Agregar", command=self.addempleado)
+        self.btonAgregar = Button(self.vEmpl, text="Agregar", bg="green", command=self.addempleado)
         self.btonAgregar.grid(row=6, column=12)
 
-        Button(self.vEmpl, text="Cancelar", command=self.vEmpl.destroy).grid(row=8, column=12)
+        Button(self.vEmpl, text="Cancelar", bg="red",command=self.vEmpl.destroy).grid(row=8, column=12)
 
         self.vEmpl.mainloop()
 
@@ -70,10 +70,12 @@ class aggEmpleado():
             self.validateNumeric(ci)
             self.validateNumeric(salary)
             newEmpleado = Employee(salary, name=nombre, lastName=apellido, ci=ci, address=direccion, telephone=telefono)
+            self.vEmpl.destroy()
             Controller.addEmployee(ci,newEmpleado)
+            messagebox.showinfo("EMPLEADO", "EMPLEADO AGREGADO CON EXITO")
 
         except Exception as e:
-            messagebox.askyesno("ERROR", e)
+            messagebox.showerror("ERROR", e)
 
     def validateNumeric(self, value):
         if not value.isdigit():

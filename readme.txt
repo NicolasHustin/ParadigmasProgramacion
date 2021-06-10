@@ -16,3 +16,8 @@ Ejecucion del programa
 
     Para iniciar la aplicacion debe ejecutarse el script RcsApp.py desde la terminal
     =>$ python3 RcsApp.py
+
+Ejecucion del programa TK
+
+    Para iniciar la aplicacion debe ejecutarse el script RcsAppVista.py desde la terminal
+    =>$ python3 RcsAppVista.py

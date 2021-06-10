@@ -6,6 +6,8 @@ from View.consultaGeneral import consultaGeneral
 from View.consultaPorCi import consultaPorCi
 from View.aggEmpleado import aggEmpleado
 from View.aggReserva import agregarReserva
+from View.devolverReserva import devolver
+from View.presupuesto import presupuesto
 
 resolucion_print = "650x425+550+200"
 colores = ["Navy blue","gray", "black"]
@@ -36,6 +38,7 @@ class MainWindow():
         menuConsulta = Menu(barraMenu, tearoff=0)
         menuConsulta.add_command(label="CONSULTAR POR CI", command=self.consultarPorCI)
         menuConsulta.add_command(label="CONSULTA GRAL", command=self.consultaGral)
+        menuConsulta.add_command(label="CONSULTA PRESUPUESTO", command=self.consultaPresupuesto)
         barraMenu.add_cascade(label="CONSULTA", menu=menuConsulta)
 
         menuAgregarReserva = Menu(barraMenu, tearoff=0)
@@ -67,8 +70,10 @@ class MainWindow():
         aggEmpleado(self.ventana)
 
     def devolverArticulos(self):
-        #TODO: IMPLEMENTAR EL METODO
-        pass
+        devolver(self.ventana)
 
     def consultarPorCI(self):
         consultaPorCi(self.ventana)
+
+    def consultaPresupuesto(self):
+        presupuesto(self.ventana)
