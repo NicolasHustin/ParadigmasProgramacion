@@ -105,6 +105,8 @@ class View():
                 #TODO
                 #Consulta un presupuesto, un precio estimado de los articulos a rentar
                 View.cleanScreen()
+                View.imprimirPresupuesto()
+
 
                 pauseProcess()
             
@@ -173,6 +175,20 @@ class View():
         print('\n\tAGREGAR RESERVA')
         print('\nCedula cliente: ')
         #client = Controller.
+
+    def imprimirPresupuesto():
+        View.cleanScreen()
+        print('--'*45)
+        print('\n\n\tPRESUPUESTO')
+        print('\n\tAGREGAR AL PEDIDO:')
+        print('\n1) SILLA:')
+        print('\n2) MESA:')
+        print('\n3) CUBIERTO:')
+        print('\n4) TELAS:\n')
+
+        opcionPresupuesto = input('Eliga una opcion:  ')
+        return int(opcionPresupuesto)
+        
 
     
                 
