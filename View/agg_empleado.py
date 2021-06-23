@@ -2,11 +2,13 @@ from tkinter import *
 from tkinter import font
 from tkinter import messagebox
 from Person import Employee
-from AppController import *
+from APP_Controller import *
 
 tamano = "500x220+475+180"
 
-class aggEmpleado():
+''' clase que se encarga de agregar un empleado en la empresa '''
+
+class Agg_Empleado():
 
     def __init__(self,ventana):
         self.ventana = ventana
@@ -51,14 +53,14 @@ class aggEmpleado():
         self.sueldo.focus()
         self.sueldo.grid(row=10, column=10)
 
-        self.btonAgregar = Button(self.vEmpl, text="Agregar", bg="green", command=self.addempleado)
+        self.btonAgregar = Button(self.vEmpl, text="Agregar", bg="green", command=self.add_empleado)
         self.btonAgregar.grid(row=6, column=12)
 
         Button(self.vEmpl, text="Cancelar", bg="red",command=self.vEmpl.destroy).grid(row=8, column=12)
 
         self.vEmpl.mainloop()
 
-    def addempleado(self):
+    def add_empleado(self):
         ci=self.cedula.get()
         nombre = self.nombre.get()
         apellido = self.apellido.get()
@@ -67,16 +69,16 @@ class aggEmpleado():
         salary = self.sueldo.get()
 
         try:
-            self.validateNumeric(ci)
-            self.validateNumeric(salary)
-            newEmpleado = Employee(salary, name=nombre, lastName=apellido, ci=ci, address=direccion, telephone=telefono)
+            self.validate_numeric(ci)
+            self.validate_numeric(salary)
+            new_empleado = Employee(salary, name=nombre, last_name=apellido, ci=ci, address=direccion, telephone=telefono)
             self.vEmpl.destroy()
-            Controller.addEmployee(ci,newEmpleado)
+            Controller.add_employee(ci,new_empleado)
             messagebox.showinfo("EMPLEADO", "EMPLEADO AGREGADO CON EXITO")
 
         except Exception as e:
             messagebox.showerror("ERROR", e)
 
-    def validateNumeric(self, value):
+    def validate_numeric(self, value):
         if not value.isdigit():
             raise Exception("Debe ser un valor numerico")

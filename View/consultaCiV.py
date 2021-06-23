@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import font
 import tkinter.ttk as ttk
-from AppController import *
+from APP_Controller import *
 'tamaño de ventanas'
 tamano="600x325+430+150"
 tamano2="520x370+470+150"
@@ -22,7 +22,7 @@ class consultaCiV():
         self.vCi.title("CONSULTA POR CI")
         self.vCi.grab_set()
 
-        empl = Controller.employeeInquiry(self.ci)
+        empl = Controller.employee_inquiry(self.ci)
 
         scrollbarVertical = ttk.Scrollbar(self.vCi, orient=VERTICAL)
         scrollbarHorizontal = ttk.Scrollbar(self.vCi, orient=HORIZONTAL)

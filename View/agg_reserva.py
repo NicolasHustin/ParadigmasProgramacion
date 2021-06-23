@@ -1,5 +1,5 @@
 from View.consultaCiV import consultaCiV
-from AppController import *
+from APP_Controller import *
 from Person import Customer
 from Receipts import Invoice
 
@@ -10,7 +10,7 @@ import tkinter.ttk as ttk
 tamano='600x350+430+145'
 colorFont='red'
 
-class agregarReserva():
+class agregar_reserva():
     ''' clase que sirve a la vista para agregar una reserva '''
 
     def __init__(self, ventana):
@@ -107,14 +107,14 @@ class agregarReserva():
         self.cubre = Entry(self.frmbien)
         self.cubre.place(x=325,y=252)
 
-        self.btonAgregar = Button(self.vReserva, text="Reservar", bg='green',command=self.addCliente)
+        self.btonAgregar = Button(self.vReserva, text="Reservar", bg='green',command=self.add_cliente)
         self.btonAgregar.place(x=430,y=305)
 
         Button(self.vReserva, text="Cancelar", bg="red",command=self.vReserva.destroy).place(x=510,y=305)
 
         self.vReserva.mainloop()
 
-    def addCliente(self):
+    def add_cliente(self):
         self.vReserva.destroy()
         messagebox.showinfo("addCustomer", "FALTA IMPLEMENTAR")
         #TODO:
@@ -124,7 +124,7 @@ class agregarReserva():
         if not value.isdigit():
             raise Exception("Cedula o Ruc invalida")
 
-    def aggReserva(self):
+    def agg_reserva(self):
         #TODO: Implementar el metodo
         pass
 
@@ -132,7 +132,7 @@ class agregarReserva():
         pass
         #messagebox.showinfo('Factura',Factura.calcular(cliente))
 
-    def consultaci(self):
+    def consulta_ci(self):
         ci = self.cedula.get()
         consultaCiV
 

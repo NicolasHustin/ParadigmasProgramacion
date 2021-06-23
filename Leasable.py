@@ -1,7 +1,8 @@
 from abc import ABCMeta, abstractmethod
-from DataBase import *
+from database import *
 
 class Leasable (object):
+    ''' clase abstracta que representa o hace referencia a un objeto que puede ser rentado '''
 
     __metaclass__ = ABCMeta
 
@@ -18,6 +19,7 @@ class Leasable (object):
         pass
 
 class Chair(Leasable):
+    ''' clase que representa una silla y hereda de Leasable'''
 
     __metaclass__=ABCMeta
 
@@ -25,16 +27,17 @@ class Chair(Leasable):
         super().__init__()
 
 class IronChair(Chair):
+    ''' clase que representa a una silla de hierro dentro del negocio'''
     __price=5000
 
     def __init__(self):
         super().__init__()
 
     def rent(cant):
-        rent('ironChair', cant)
+        rent('iron_chair', cant)
 
-    def returnObj(cant):
-        returnObj('ironChair', cant)
+    def return_obj(cant):
+        return_obj('iron_chair', cant)
     
     @classmethod
     def price(self):
@@ -50,10 +53,10 @@ class PlasticChair(Chair):
         super().__init__()
 
     def rent(cant):
-        rent('plasticChair', cant)
+        rent('plastic_chair', cant)
 
-    def returnObj(cant):
-        returnObj('plasticChair', cant)
+    def return_obj(cant):
+        return_obj('plastic_chair', cant)
 
     @classmethod
     def price(self):
@@ -63,6 +66,7 @@ class PlasticChair(Chair):
         return(super().__str__())
 
 class Puff(Chair):
+    ''' clase que hace referencia a los puff dentro del negocio '''
     __price=2000
 
     def __init__(self):
@@ -71,8 +75,8 @@ class Puff(Chair):
     def rent(cant):
         rent('puff', cant)
 
-    def returnObj(cant):
-        returnObj('puff', cant)
+    def return_obj(cant):
+        return_obj('puff', cant)
 
     @classmethod
     def price(self):
@@ -83,12 +87,14 @@ class Puff(Chair):
 
     
 class Table(Leasable):
+    ''' Clase que representa a una Mesa dentro del negocio y hereda de Leasable (rentable)'''
     __metaclass__ = ABCMeta
 
     def __init__(self):
         super().__init__()
 
 class LongTable(Table):
+    ''' clase que hace referencia a una mesa larga o tablon dentro del negocio '''
 
     __price = 20000
 
@@ -96,13 +102,13 @@ class LongTable(Table):
         super().__init__()
 
     def rent(cant):
-        rent('longTable', cant)
+        rent('long_table', cant)
 
-    def returnObj(cant):
-        returnObj('longTable', cant)
+    def return_obj(cant):
+        return_obj('long_table', cant)
 
     @classmethod
-    def getPrice(self):
+    def price(self):
         return (LongTable.__price)
 
     def __str__(self):
@@ -116,36 +122,37 @@ class ShortTable(Table):
         super().__init__()
 
     def rent(cant):
-        rent('shortTable', cant)
+        rent('short_table', cant)
 
-    def returnObj(cant):
-        returnObj('shortTable', cant)
+    def return_obj(cant):
+        return_obj('short_table', cant)
 
     @classmethod
-    def getPrice(self):
+    def price(self):
         return (ShortTable.__price)
 
     def __str__(self):
         return (super().__str__())
 
 class CircleTable(Table):
-
+    ''' clase que hace referencia a una mesa redonda dentro del negocio '''
     __price=10000
 
     def rent(cant):
-        rent('circleTable', cant)
+        rent('circle_table', cant)
 
-    def returnObj(cant):
-        returnObj('cicrcleTable', cant)
+    def return_obj(cant):
+        return_obj('cicrcle_table', cant)
 
     @classmethod
-    def getPrice(self):
+    def price(self):
         return (CircleTable.__price)
 
     def __str__(self):
         return (super().__str__())
 
 class Cookware(Leasable):
+    ''' Clase que hace referencia a los articulos de cocina dentro del negocio y hereda de la clase Leasable, rentable'''
 
     __metaclass__=ABCMeta
 
@@ -153,57 +160,61 @@ class Cookware(Leasable):
         super().__init__()
     
 class Dish(Cookware):
+    ''' clase que hace referencia a un Plato dentro del negocio'''
 
     __price = 2000
 
     def rent(cant):
         rent('dish', cant)
 
-    def returnObj(cant):
-        returnObj('dish', cant)
+    def return_obj(cant):
+        return_obj('dish', cant)
 
     @classmethod
-    def getPrice(self):
+    def price(self):
         return (Dish.__price)
 
     def __str__(self):
         return (super().__str__())
 
 class Cutlery(Cookware):
+    ''' clase que hace refencia a un juego de cubiertos dentro del negocio'''
 
     __price = 2000
 
     def rent(cant):
         rent('cutlery', cant)
 
-    def returnObj(cant):
-        returnObj('cutlery', cant)
+    def return_obj(cant):
+        return_obj('cutlery', cant)
 
     @classmethod
-    def getPrice(self):
+    def price(self):
         return (Cutlery.__price)
 
     def __str__(self):
         return (super().__str__())
 
 class Glasses(Cookware):
+    ''' clase que hace referencia a un VASO dentro del negocio'''
 
     __price = 1000
 
     def rent(cant):
         rent('glasses', cant)
 
-    def returnObj(cant):
-        returnObj('glasses', cant)
+    def return_obj(cant):
+        return_obj('glasses', cant)
 
     @classmethod
-    def getPrice(self):
+    def price(self):
         return (Glasses.__price)
 
     def __str__(self):
         return (super().__str__())
 
 class TableCloth(Leasable):
+    ''' clase que hace referencia a un mantel para la mesa, hereda de Leasable (un articulo rentable) '''
 
     __metaclass__=ABCMeta
 
@@ -211,6 +222,7 @@ class TableCloth(Leasable):
         super().__init__()
 
 class DiolenCloth(TableCloth):
+    ''' clase que hace referencia a un mantel de diolen '''
 
     __price=10000
 
@@ -219,11 +231,11 @@ class DiolenCloth(TableCloth):
     def rent(color, cant):
         rent(color, cant)
 
-    def returnObj(color, cant):
-        returnObj(color, cant)
+    def return_obj(color, cant):
+        return_obj(color, cant)
 
     @classmethod
-    def getPrice(self):
+    def price(self):
         return (DiolenCloth.__price)
 
     @classmethod

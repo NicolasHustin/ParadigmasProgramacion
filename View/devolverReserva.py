@@ -1,5 +1,5 @@
 from tkinter import *
-from AppController import *
+from APP_Controller import *
 from tkinter import font
 from tkinter import messagebox
 tamano = "400x120+520+180"

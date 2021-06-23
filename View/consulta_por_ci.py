@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import font
 import tkinter.ttk as ttk
-from AppController import *
+from APP_Controller import *
 from View.consultaCiV import consultaCiV
 'tamaño de ventanas'
 tamaño="600x325+430+150"
@@ -34,7 +34,7 @@ class consultaPorCi():
         self.cedula.focus()
         self.cedula.grid(row=5, column=10)
 
-        self.btonAgregar = Button(self.vLista, text="CONSULTAR", bg="green",command=self.consultaci)
+        self.btonAgregar = Button(self.vLista, text="CONSULTAR", bg="green",command=self.consulta_ci)
         self.btonAgregar.grid(row=6, column=12)
 
         Button(self.vLista, text="CANCELAR", bg="RED", command=self.vLista.destroy).grid(row=8, column=12)
@@ -42,7 +42,7 @@ class consultaPorCi():
         self.vLista.mainloop()
 
         
-    def consultaci(self):
+    def consulta_ci(self):
         ci = self.cedula.get()
         consultaCiV(self.ventana,ci)
 

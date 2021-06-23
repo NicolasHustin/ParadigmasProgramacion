@@ -2,10 +2,10 @@ from tkinter import *
 from tkinter import messagebox
 from PIL import ImageQt, Image 
 import random
-from View.consultaGeneral import consultaGeneral
-from View.consultaPorCi import consultaPorCi
-from View.aggEmpleado import aggEmpleado
-from View.aggReserva import agregarReserva
+from View.consulta_general import consultaGeneral
+from View.consulta_por_ci import consultaPorCi
+from View.agg_empleado import Agg_Empleado
+from View.agg_reserva import agregar_reserva
 from View.devolverReserva import devolver
 from View.presupuesto import presupuesto
 
@@ -23,35 +23,34 @@ class MainWindow():
         ventana.resizable(0, 0)
         ventana.geometry(resolucion_print)
         ventana.title("Rental Control SYSTEM")
-        ventana.protocol("WM_DELETE_WINDOW", self.salir)
         ventana.config(bg = random.choice(colores))
         #Representacion imagenes, TODO: verificar como asignar el icono, actualmente no funciona de esa manera capaz por la version
-        #icono = PhotoImage(file='icono.png')
-        #ventana.iconphoto(ventana, icono)
+        icono = PhotoImage(file='pruebapp.gif')
+        ventana.iconphoto(ventana, icono)
 
         barraMenu = Menu(ventana, bg='black', fg='red')
 
         #Representacion imagenes, TODO: verificar como asignar el icono, actualmente no funciona de esa manera capaz por la version
-        #image = ImageQt.PhotoImage(Image.open("fondo.png"))
+        #image = ImageQt.PhotoImage(Image.open("pruebapp.gif"))
         #lbl= Label(ventana, image=image).place(x=7, y=10)
 
-        menuConsulta = Menu(barraMenu, tearoff=0)
-        menuConsulta.add_command(label="CONSULTAR POR CI", command=self.consultarPorCI)
-        menuConsulta.add_command(label="CONSULTA GRAL", command=self.consultaGral)
-        menuConsulta.add_command(label="CONSULTA PRESUPUESTO", command=self.consultaPresupuesto)
-        barraMenu.add_cascade(label="CONSULTA", menu=menuConsulta)
+        menu_consulta = Menu(barraMenu, tearoff=0)
+        menu_consulta.add_command(label="CONSULTAR POR CI", command=self.consultar_por_ci)
+        menu_consulta.add_command(label="CONSULTA GRAL", command=self.consulta_gral)
+        menu_consulta.add_command(label="CONSULTA PRESUPUESTO", command=self.consulta_presupuesto)
+        barraMenu.add_cascade(label="CONSULTA", menu=menu_consulta)
 
-        menuAgregarReserva = Menu(barraMenu, tearoff=0)
-        menuAgregarReserva.add_command(label="Agregar Reserva", command=self.agregarReserva)
-        barraMenu.add_cascade(label="RESERVAS", menu=menuAgregarReserva)
+        menu_agregar_reserva = Menu(barraMenu, tearoff=0)
+        menu_agregar_reserva.add_command(label="Agregar Reserva", command=self.agregar_reserva)
+        barraMenu.add_cascade(label="RESERVAS", menu=menu_agregar_reserva)
 
-        menuDevolver = Menu(barraMenu, tearoff=0)
-        menuDevolver.add_command(label="DEVOLVER ARTICULOS", command=self.devolverArticulos)
-        barraMenu.add_cascade(label="DEVOLVER", menu=menuDevolver)
+        menu_devolver = Menu(barraMenu, tearoff=0)
+        menu_devolver.add_command(label="DEVOLVER ARTICULOS", command=self.devolver_articulos)
+        barraMenu.add_cascade(label="DEVOLVER", menu=menu_devolver)
 
-        menuAgregarEmpleado = Menu(barraMenu, tearoff=0)
-        menuAgregarEmpleado.add_command(label="AGREGAR EMPLEADO", command=self.agregarEmpleado)
-        barraMenu.add_cascade(label="AGREGAR", menu=menuAgregarEmpleado)
+        menu_agregar_empleado = Menu(barraMenu, tearoff=0)
+        menu_agregar_empleado.add_command(label="AGREGAR EMPLEADO", command=self.agregar_empleado)
+        barraMenu.add_cascade(label="AGREGAR", menu=menu_agregar_empleado)
 
         ventana.config(menu=barraMenu)
         ventana.mainloop()
@@ -60,20 +59,26 @@ class MainWindow():
         if(messagebox.askyesno("Salir", "¿Terminar la ejecución?")):
             exit()
 
-    def consultaGral(self):
+    def consulta_gral(self):
+        '''Metodo que devuelve la pantalla para una consulta general '''
         consultaGeneral(self.ventana)
 
-    def agregarReserva(self):
-        agregarReserva(self.ventana)
+    def agregar_reserva(self):
+        '''metodo que devuelve la pantalla para agregar una reserva'''
+        agregar_reserva(self.ventana)
 
-    def agregarEmpleado(self):
-        aggEmpleado(self.ventana)
+    def agregar_empleado(self):
+        '''metodo que devuelve la pantalla para agregar un empleado'''
+        Agg_Empleado(self.ventana)
 
-    def devolverArticulos(self):
+    def devolver_articulos(self):
+        '''metodo que devuelve la pantalla para devolver un articulo'''
         devolver(self.ventana)
 
-    def consultarPorCI(self):
+    def consultar_por_ci(self):
+        '''metodo que devuelve la patnalla para una consulta de persona por ci'''
         consultaPorCi(self.ventana)
 
-    def consultaPresupuesto(self):
+    def consulta_presupuesto(self):
+        '''metodo que devuelve la pantalla para armar un presupuesto aproximado'''
         presupuesto(self.ventana)

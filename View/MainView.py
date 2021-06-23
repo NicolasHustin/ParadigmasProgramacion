@@ -1,19 +1,13 @@
 import os
 from Person import Customer, Employee
 from View.ViewUtils import *
-from AppController import *
+from APP_Controller import *
 
 
 class View():
 
-    
     @staticmethod
-    def cleanScreen():
-        '''Function for clear screen'''
-        os.system('cls' if os.name =='nt' else 'clear')
-
-    @staticmethod
-    def validateOperation(min, max):
+    def validate_operation(min, max):
         '''Function for validate input operations'''
         value = input("[{}] al [{}] -->> ".format(min, max))
         try:
@@ -25,30 +19,30 @@ class View():
         except ValueError:
             print('\n['+str(valor)+'] Is not a valid option... please try again;')
 
-    def aggEmployee():
-        View.cleanScreen()
+    def agg_employee():
+        View_util.clean_screen()
         print('--'*45)
         print('\n\n\t\tINGRESE LOS DATOS DEL EMPLEADO\n')
         while True:
             try:
                 name = input('\t\tNOMBRE: ')
-                lastName = input('\t\tAPELLIDO: ')
-                ciEmployee = input('\t\tCEDULA: ')
+                last_name = input('\t\tAPELLIDO: ')
+                ci_employee = input('\t\tCEDULA: ')
                 salary = int(input('\t\tSUELDO: '))
                 address = input('\t\tDIRECCION: ')
                 telephone = input('\t\tTELEFONO: ')
                 print('--'*45)
-                newEmployee = Employee(salary, name=name, lastName=lastName, ci=ciEmployee, address=address, telephone=telephone)
-                Controller.addEmployee(ciEmployee, newEmployee)
-                print('\nEmpleado [{}] con nombre: {} guardado con exito!'.format(ciEmployee, newEmployee.getName()))
+                new_employee = Employee(salary, name=name, last_name=last_name, ci=ci_employee, address=address, telephone=telephone)
+                Controller.add_employee(ci_employee, new_employee)
+                print('\nEmpleado [{}] con nombre: {} guardado con exito!'.format(ci_employee, new_employee.getName()))
             except Exception as e:
                 print('\nError in addEmployee: -> ', e)
 
-    def generalInquiry():
-        operationInquiry = 0
-        while(operationInquiry != 5):
-            View.cleanScreen()
-            operationInquiry = 0
+    def general_inquiry():
+        operation_inquiry = 0
+        while(operation_inquiry != 5):
+            View_util.clean_screen()
+            operation_inquiry = 0
             print('--'*45)
             print('\n\tCONSULTAS GENERALES')
             print('\n\n1) CONSULTA EMPLEADOS')
@@ -57,127 +51,124 @@ class View():
             print('4) PRESUPUSTO \n')
             print('5) VOLVER \n\n')
             print('--'*45)
-            operationInquiry = int(input('Ingrese una opcion [1 al 5]: '))
-            if(operationInquiry==1):
-                typeEmployee = 0
-                while(typeEmployee != 3):
-                    typeEmployee = View.typeEmployee()
+            operation_inquiry = int(input('Ingrese una opcion [1 al 5]: '))
+            if(operation_inquiry==1):
+                type_employee = 0
+                while(type_employee != 3):
+                    type_employee = View.type_employee()
                     #QUERY FOR ID
-                    if(typeEmployee == 1):
-                        View.cleanScreen()
-                        ciEmployee = View.employeeInquity()
-                        employee = Controller.employeeInquiry(ciEmployee)
+                    if(type_employee == 1):
+                        View_util.clean_screen()
+                        ci_employee = View.employee_inquity()
+                        employee = Controller.employee_inquiry(ci_employee)
                         print(employee)
-                        pauseProcess()
+                        View_util.pause_process()
                     #A GENERAL QUERY 
-                    if(typeEmployee == 2):
-                        View.cleanScreen()
-                        listOfEmployees = Controller.getGeneralEmployees()
+                    if(type_employee == 2):
+                        View_util.clean_screen()
+                        list_of_employees = Controller.get_general_employees()
                         print('\n')
-                        for empl in listOfEmployees:
+                        for empl in list_of_employees:
                             print('--'*45)
                             print(empl)
                             print('--'*45)
-                        pauseProcess()
-            if(operationInquiry == 2):
-                typeArticle = 0
-                while (typeArticle != 3):
-                    typeArticle = View.typeQueryArticle()
-                    if(typeArticle==1):
+                        View_util.pause_process()
+            if(operation_inquiry == 2):
+                type_article = 0
+                while (type_article != 3):
+                    type_article = View.typeQueryArticle()
+                    if(type_article==1):
                         print('Consulta por codigo')
-                        #keyArticle = 
-                        article = Controller.articlesInquiry(keyArticle)
-                        pauseProcess()
-                    if(typeArticle==2):
-                        View.cleanScreen()
-                        listOfArticles = Controller.printArticles()
+                        key_article = 0 #TODO:obtener el codigo del articulo 
+                        article = Controller.articlesInquiry(key_article)
+                        View_util.pause_process()
+                    if(type_article==2):
+                        View_util.clean_screen()
+                        list_of_articles = Controller.printArticles()
                         print('\n')
-                        for article in listArticles:
+                        for article in list_of_articles:
                             print('--'*45)
                             print(article)
                             print('--'*45)
-                        pauseProcess()
-            if(operationInquiry == 3):
+                        View_util.pause_process()
+            if(operation_inquiry == 3):
                 #TODO
                 #Consulta de clientes, se podra ver todos los clientes asi tambien consulta por cedula
-                pauseProcess()
-            if(operationInquiry == 4):
+                View_util.pause_process()
+            if(operation_inquiry == 4):
                 #TODO
                 #Consulta un presupuesto, un precio estimado de los articulos a rentar
-                View.cleanScreen()
+                View_util.clean_screen()
                 View.imprimirPresupuesto()
-
-
-                pauseProcess()
+                View_util.pause_process()        
             
-            
-            
-    def rentArticles():
-        operationRent = 0
-        while(operationRent != 3):
-            View.cleanScreen()
+    def rent_articles():
+        operation_rent = 0
+        while(operation_rent != 3):
+            View_util.clean_screen()
             print('--'*45)
             print('\n\n\tAGREGAR RESERVA')
             print('\n1)Ingresar ci cliente')
             print('2) Nuevo cliente')
-            isClient = int(input('Ingrese una opcion [1 al 3]: '))
-            if(isClient==1):
-                View.rentArticlesClient()
-            if(isClient==2):
-                rentArticlesNewClient()
+            is_client = int(input('Ingrese una opcion [1 al 3]: '))
+            if(is_client==1):
+                View.rent_articles_client()
+            if(is_client==2):
+                #rentArticlesNewClient()
+                pass
 
-    def typeEmployee():
+    def type_employee():
         ''' procedure to print menu to select type of employee, general or individual '''
-        View.cleanScreen()
+        View_util.clean_screen()
         print('--'*45)
         print('\n\tCONSULTA EMPLEADO')
         print('\n\n1) Consulta por ci:')
         print('2) Consulta general')
         print('3) Volver')
-        typeEmployee = int(input('\n\nIngrese una opcion: '))
-        return typeEmployee
+        type_employee = int(input('\n\nIngrese una opcion: '))
+        return type_employee
 
-    def employeeInquity():
+    def employee_inquity():
         ''' Query for CI, return a single employee '''
-        View.cleanScreen()
+        View_util.clean_screen()
         print('--'*45)
         print('\n\n\tCONSULTA EMPLEADO')
-        ciEmployee = input('\n\nCedula Empleado: ')
-        return ciEmployee
+        ci_employee = input('\n\nCedula Empleado: ')
+        return ci_employee
 
     #TODO: MODIFICAR 
-    def articleInquiry():
-        View.cleanScreen()
+    def article_inquiry():
+        View_util.clean_screen()
         print('--'*45)
         print('\n\n\tCONSULTA DE ARTICULOS')
         print('COD\t\t DESCRIPCION')
-        listArticlesInStock = []
-        listArticlesInStock = listArticles()
-        for key in listArticles:
+        list_articles_in_stock = []
+        list_articles_in_stock = list_articles()
+        for key in list_articles_in_stock:
             print(++i, key)
-        keyArticle = input('\nCodigo Articulo: ')
-        return keyArticle
+        key_article = input('\nCodigo Articulo: ')
+        return key_article
 
     def typeQueryArticle():
         ''' procedure to print menu to select type of article query  '''
-        View.cleanScreen()
+        View_util.clean_screen()
         print('--'*45)
         print('\n\tCONSULTA ARTICULOS')
         print('\n\n1) Consultar por codigo')
         print('2) Consulta general')
         print('3) Volver')
-        typeArticle = int(input('\n\nIngrese una opcion: '))
-        return typeArticle
+        type_article = int(input('\n\nIngrese una opcion: '))
+        return type_article
 
-    def rentArticlesClient():
-        View.cleanScreen()
+    def rent_articles_client():
+        View_util.clean_screen()
         print('--'*45)
         print('\n\tAGREGAR RESERVA')
         print('\nCedula cliente: ')
         #client = Controller.
 
     def imprimirPresupuesto():
-        View.cleanScreen()
+        View_util.clean_screen()
         print('--'*45)
         print('\n\n\tPRESUPUESTO')
         print('\n\tAGREGAR AL PEDIDO:')
@@ -186,8 +177,8 @@ class View():
         print('\n3) CUBIERTO:')
         print('\n4) TELAS:\n')
 
-        opcionPresupuesto = input('Eliga una opcion:  ')
-        return int(opcionPresupuesto)
+        opcion_presupuesto = input('Eliga una opcion:  ')
+        return int(opcion_presupuesto)
         
 
     

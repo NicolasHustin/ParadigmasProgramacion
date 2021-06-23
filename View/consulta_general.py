@@ -1,7 +1,8 @@
+from APP_Controller import Controller
 from tkinter import *
 from tkinter import font
 import tkinter.ttk as ttk
-from AppController import *
+from APP_Controller import *
 'tamaño de ventanas'
 tamano="600x325+430+150"
 tamano2="520x370+470+150"
@@ -9,6 +10,7 @@ tamano2="520x370+470+150"
 color='White'
 
 class consultaGeneral():
+    '''pantalla para una consulta general'''
     
     def __init__(self, ventana):
         self.ventana = ventana
@@ -39,9 +41,9 @@ class consultaGeneral():
         scrollbarHorizontal.pack(side=BOTTOM, fill=X, expand= False)
         self.listbox.pack(fill='both', expand='yes')
 
-        listClient = Controller.getGeneralEmployees()
+        list_client = Controller.get_general_employees()
 
-        for i in listClient:
+        for i in list_client:
             self.listbox.insert(END,i)
             self.listbox.insert(END, '****'*25)
 
