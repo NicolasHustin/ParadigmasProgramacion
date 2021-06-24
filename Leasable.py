@@ -15,7 +15,7 @@ class Leasable (object):
         pass
 
     @abstractmethod
-    def returnObj():
+    def return_obj():
         pass
 
 class Chair(Leasable):

@@ -76,7 +76,7 @@ class View():
             if(operation_inquiry == 2):
                 type_article = 0
                 while (type_article != 3):
-                    type_article = View.typeQueryArticle()
+                    type_article = View.type_query_article()
                     if(type_article==1):
                         print('Consulta por codigo')
                         key_article = 0 #TODO:obtener el codigo del articulo 
@@ -149,7 +149,7 @@ class View():
         key_article = input('\nCodigo Articulo: ')
         return key_article
 
-    def typeQueryArticle():
+    def type_query_article():
         ''' procedure to print menu to select type of article query  '''
         View_util.clean_screen()
         print('--'*45)
@@ -167,7 +167,8 @@ class View():
         print('\nCedula cliente: ')
         #client = Controller.
 
-    def imprimirPresupuesto():
+    def imprimir_presupuesto():
+        '''funcion para imprimir un presupuesto aproximado'''
         View_util.clean_screen()
         print('--'*45)
         print('\n\n\tPRESUPUESTO')
